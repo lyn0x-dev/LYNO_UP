@@ -1,0 +1,46 @@
+{
+  "name": "bot-hosting-panel",
+  "version": "2.0.0",
+  "description": "لوحة استضافة البوتات - Bot Hosting Panel",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "node scripts/e2e.js",
+    "pm2:start": "pm2 start index.js --name bot-panel",
+    "pm2:stop": "pm2 stop bot-panel",
+    "pm2:restart": "pm2 restart bot-panel"
+  },
+  "keywords": [
+    "bot",
+    "hosting",
+    "panel",
+    "nodejs"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "7z-wasm": "^1.2.0",
+    "adm-zip": "^0.6.1",
+    "express": "^4.18.2",
+    "fs-extra": "^11.1.1",
+    "multer": "^2.0.2",
+    "selfsigned": "^5.5.0",
+    "ws": "^8.14.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src",
+      "lib",
+      "index.js",
+      "server.js"
+    ],
+    "ext": "js,json"
+  }
+}

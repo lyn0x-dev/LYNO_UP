@@ -1,0 +1,798 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#412c55">
+    <title>LYNO UP - Cloud & Bot Control</title>
+    <meta name="description" content="LYNO UP Control Panel - Manage Node.js bots and servers">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="LYNO UP">
+    <meta property="og:title" content="LYNO UP - Cloud & Bot Control">
+    <meta property="og:description" content="Modern hosting panel for managing Node.js bots and apps">
+    <meta property="og:url" content="%%BASE_URL%%/">
+    <meta property="og:image" content="%%BASE_URL%%/og-image.png">
+    <meta property="og:image:secure_url" content="%%BASE_URL%%/og-image.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="LYNO UP logo">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LYNO UP - Cloud & Bot Control">
+    <meta name="twitter:description" content="Modern hosting panel for managing Node.js bots and apps">
+    <meta name="twitter:image" content="%%BASE_URL%%/og-image.png">
+
+    <!-- LYNO UP Logo -->
+    <link rel="icon" href="/favicon.png" type="image/png">    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="style.css">
+    
+    <script>
+        window.SiteConfiguration = {
+            "name": "LYNO UP",
+            "arix": {
+                "logoHeight": "48px",
+                "discord": "https://lynox.duckdns.org/",
+                "support": "https://lynox.duckdns.org/",
+                "status": "https://lynox.duckdns.org/",
+                "billing": "https://lynox.duckdns.org/",
+                "copyright": "Designed by LYNO UP",
+                "starsBackground": "true",
+                "primary": "#412c55",
+                "defaultMode": "darkmode"
+            }
+        };
+    </script>
+</head>
+<body class="app-loading">
+
+    <!-- Background Animated Starfield Canvas -->
+    <canvas id="stars-canvas"></canvas>
+
+    <!-- Splash Screen -->
+    <div class="splash" id="splash">
+        <div class="splash-logo">
+            <img src="logo.png" alt="LYNO UP" width="72" height="72">
+        </div>
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Auth Screen (LYNO UP / Arix Layout 3) -->
+    <div class="auth-screen" id="auth-screen">
+        <div class="auth-glow"></div>
+        <div class="auth-shell">
+            <aside class="auth-showcase">
+                <div class="showcase-grid"></div>
+                <div class="showcase-top">
+                    <img src="logo.png" alt="LYNO UP" width="46" height="46" class="showcase-logo">
+                    <div class="showcase-brand">
+                        <span>LYNO <b>UP</b></span>
+                        <small>Cloud &amp; Bot Control</small>
+                    </div>
+                    <span class="showcase-live"><i></i> LIVE</span>
+                </div>
+                <div class="showcase-copy">
+                    <span class="showcase-eyebrow">NEXT-GEN HOSTING PANEL</span>
+                    <h2>أدر بوتاتك<br><span>بكل احترافية.</span></h2>
+                    <p>منصة سحابية سريعة وآمنة لتشغيل وإدارة تطبيقات Node.js من لوحة واحدة أنيقة.</p>
+                </div>
+                <ul class="showcase-features">
+                    <li>
+                        <span class="sf-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+                        <div><b>تشغيل فوري</b><small>ابدأ سيرفرك خلال ثوانٍ</small></div>
+                    </li>
+                    <li>
+                        <span class="sf-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+                        <div><b>حماية ومراقبة</b><small>مراقبة مباشرة للموارد</small></div>
+                    </li>
+                    <li>
+                        <span class="sf-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span>
+                        <div><b>إدارة كاملة</b><small>ملفات وأوامر ونسخ احتياطي</small></div>
+                    </li>
+                </ul>
+                <div class="showcase-foot">
+                    <div><b>99.9%</b><span>Uptime</span></div>
+                    <div><b>24/7</b><span>Support</span></div>
+                    <div><b>&lt; 1s</b><span>Boot time</span></div>
+                </div>
+            </aside>
+
+            <div class="auth-card">
+                <div class="auth-kicker"><span class="auth-kicker-dot"></span> SECURE SIGN IN</div>
+            <h2 class="auth-mobile-head">تسجيل الدخول إلى حسابك</h2>
+            <div class="auth-logo">
+                <img src="logo.png" alt="LYNO UP" width="64" height="64">
+            </div>
+            
+            <h1 class="auth-title">
+                LYNO <span class="brand-accent">UP</span>
+                <span class="brand-badge">CONTROL</span>
+            </h1>
+            <p class="auth-sub">Easily manage your servers, files, and backups—all from a single dashboard.</p>
+
+            <!-- Quick Links Banner -->
+            <div class="auth-social-row">
+                <a href="https://lynox.duckdns.org/" target="_blank" class="auth-social-link" title="Discord Server">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+                    Discord
+                </a>
+                <a href="https://lynox.duckdns.org/" target="_blank" class="auth-social-link" title="System Status">
+                    <span style="width:6px;height:6px;border-radius:50%;background:#34d399;display:inline-block"></span>
+                    Status
+                </a>
+                <a href="https://lynox.duckdns.org/" target="_blank" class="auth-social-link" title="Documentation">
+                    Docs
+                </a>
+            </div>
+
+            <form id="auth-form" autocomplete="off">
+                <div class="auth-input-wrap">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <input type="text" id="auth-username" placeholder="Username / اسم المستخدم" autocomplete="username" required>
+                </div>
+                <div class="auth-input-wrap">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                    <input type="password" id="auth-password" placeholder="Password / كلمة المرور" autocomplete="current-password" required>
+                    <button type="button" class="auth-toggle-pass" id="auth-toggle-pass" title="عرض / إخفاء كلمة المرور">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </button>
+                </div>
+                <div class="auth-error" id="auth-error"></div>
+                <button class="btn btn-primary auth-btn" type="submit" id="auth-submit">تسجيل الدخول / Login</button>
+            </form>
+            <div class="auth-foot">
+                <div>Designed by LYNO UP · Cloud Management</div>
+                <div style="font-size:11px;opacity:0.7">Need assistance? <a href="https://lynox.duckdns.org/" target="_blank">Read Documentation</a></div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- App Shell -->
+    <div class="app">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <img class="sidebar-logo-img" src="logo.png" alt="LYNO UP" width="38" height="38">
+                <div class="brand-text">
+                    <div class="brand-name">
+                        LYNO <span class="brand-sub">UP</span>
+                    </div>
+                    <div class="brand-tag">Cloud & Bot Control</div>
+                </div>
+            </div>
+
+            <div class="sidebar-scroll">
+                <div class="nav-section">عام / OVERVIEW</div>
+                <nav class="sidebar-nav">
+                    <a href="#" class="nav-item active" data-page="dashboard">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
+                        <span>لوحة التحكم</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="dashboard-servers">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="7" rx="2"/><rect x="2" y="14" width="20" height="7" rx="2"/><line x1="6" y1="6.5" x2="6.01" y2="6.5"/><line x1="6" y1="17.5" x2="6.01" y2="17.5"/></svg>
+                        <span>السيرفرات</span>
+                    </a>
+                </nav>
+
+                <div class="nav-section admin-only">الإدارة / ADMINISTRATION</div>
+                <nav class="sidebar-nav admin-only">
+                    <a href="#" class="nav-item" data-page="users">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                        <span>المستخدمين</span>
+                    </a>
+                    <a href="#" class="nav-item" data-page="system">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+                        <span>معلومات النظام</span>
+                    </a>
+                </nav>
+
+                <div class="nav-section">الحساب / ACCOUNT</div>
+                <nav class="sidebar-nav">
+                    <a href="#" class="nav-item" data-page="account">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0116 0"/></svg>
+                        <span>حسابي</span>
+                    </a>
+                </nav>
+
+                <div class="nav-section">المجتمع والدعم / LINKS</div>
+                <nav class="sidebar-nav">
+                    <a href="https://lynox.duckdns.org/" target="_blank" class="nav-item nav-item-ext">
+                        <div style="display:flex;align-items:center;gap:12px">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+                            <span>سيرفر Discord</span>
+                        </div>
+                        <span class="ext-badge">COMMUNITY</span>
+                    </a>
+                    <a href="https://lynox.duckdns.org/" target="_blank" class="nav-item nav-item-ext">
+                        <div style="display:flex;align-items:center;gap:12px">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                            <span>حالة النظام / Status</span>
+                        </div>
+                        <span style="width:7px;height:7px;border-radius:50%;background:#34d399"></span>
+                    </a>
+                    <a href="https://lynox.duckdns.org/" target="_blank" class="nav-item nav-item-ext">
+                        <div style="display:flex;align-items:center;gap:12px">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                            <span>التوثيق / Docs</span>
+                        </div>
+                        <span class="ext-badge">↗</span>
+                    </a>
+                    <a href="https://lynox.duckdns.org/" target="_blank" class="nav-item nav-item-ext">
+                        <div style="display:flex;align-items:center;gap:12px">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                            <span>الفوترة / Billing</span>
+                        </div>
+                        <span class="ext-badge">↗</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="sidebar-user">
+                <div class="user-avatar" id="user-avatar">L</div>
+                <div class="user-meta">
+                    <div class="user-name" id="user-name">—</div>
+                    <div class="user-role" id="user-role">—</div>
+                </div>
+                <button class="icon-btn" id="btn-logout" title="تسجيل الخروج">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                </button>
+            </div>
+        </aside>
+
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+        <!-- Main Content Area -->
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button class="menu-toggle" id="menu-toggle" aria-label="القائمة">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    </button>
+                    
+                    <div class="breadcrumb-wrap">
+                        <span class="breadcrumb-badge">CONTROL</span>
+                        <div class="breadcrumb" id="breadcrumb">لوحة التحكم</div>
+                    </div>
+                </div>
+
+                <div class="topbar-actions">
+                    <div class="topbar-search" id="topbar-search">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" id="server-search" placeholder="ابحث عن سيرفر...">
+                        <span class="topbar-kbd">Ctrl+K</span>
+                    </div>
+
+                    <div class="topbar-quick-links">
+                        <a href="https://lynox.duckdns.org/" target="_blank" class="quick-btn" title="Discord">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+                        </a>
+                        <a href="https://lynox.duckdns.org/" target="_blank" class="quick-btn" title="Status: All Systems Operational">
+                            <span class="status-dot-ping"></span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        </a>
+                        <a href="https://lynox.duckdns.org/" target="_blank" class="quick-btn" title="Documentation">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                        </a>
+                    </div>
+
+                    <button class="btn btn-primary no-server" id="btn-new-server">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                        <span>سيرفر جديد</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard Page -->
+            <div class="page active" id="page-dashboard">
+                
+                <!-- Slot 1: LYNO UP Welcome Announcement Banner -->
+                <div class="arix-banner">
+                    <div class="banner-info">
+                        <div class="banner-badge-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                        </div>
+                        <div class="banner-text">
+                            <h3>مرحباً بك في لوحة تحكم LYNO UP Control</h3>
+                            <p>منصة سحابية متقدمة لإدارة وتشغيل بوتات وتطبيقات Node.js بكفاءة وسرعة فائقة.</p>
+                        </div>
+                    </div>
+                    <div class="banner-actions">
+                        <a href="https://lynox.duckdns.org/" target="_blank" class="btn btn-ghost btn-sm">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+              الدعم الفني
+                        </a>
+                        <a href="https://lynox.duckdns.org/" target="_blank" class="btn btn-ghost btn-sm">
+                            <span style="width:6px;height:6px;border-radius:50%;background:#34d399"></span>
+              حالة الخوادم
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slot 2: Stat Cards -->
+                <div class="stats-row">
+                    <div class="stat-box">
+                        <div class="stat-icon icon-purple">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="7" rx="2"/><rect x="2" y="14" width="20" height="7" rx="2"/><line x1="6" y1="6.5" x2="6.01" y2="6.5"/><line x1="6" y1="17.5" x2="6.01" y2="17.5"/></svg>
+                        </div>
+                        <div>
+                            <div class="stat-value" id="stat-servers">0</div>
+                            <div class="stat-label">إجمالي السيرفرات</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-box">
+                        <div class="stat-icon icon-green">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <div>
+                            <div class="stat-value" id="stat-running">0</div>
+                            <div class="stat-label">شغالة الآن (Online)</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-box">
+                        <div class="stat-icon icon-amber">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        </div>
+                        <div>
+                            <div class="stat-value" id="stat-memory">--</div>
+                            <div class="stat-label">الذاكرة الحرة (RAM)</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-box admin-only" id="stat-users-box">
+                        <div class="stat-icon icon-blue">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                        </div>
+                        <div>
+                            <div class="stat-value" id="stat-users">0</div>
+                            <div class="stat-label">حسابات المستخدمين</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slot 3: Info Advanced (Node & Platform Metrics) -->
+                <div class="arix-info-advanced">
+                    <div class="node-status-indicator">
+                        <span class="live-dot"></span>
+                        <span class="node-title">Node: Node-01 (EU-Central)</span>
+                    </div>
+                    <div class="node-specs-row">
+                        <div class="node-spec-item">
+                            <span class="ns-label">حالة العقدة:</span>
+                            <span class="ns-value" style="color:#34d399">100% طبيعية</span>
+                        </div>
+                        <div class="node-spec-item">
+                            <span class="ns-label">النواة:</span>
+                            <span class="ns-value">Node.js Engine</span>
+                        </div>
+                        <div class="node-spec-item">
+                            <span class="ns-label">حماية سحابية:</span>
+                            <span class="ns-value" style="color:#c4b5fd">Active DDoS Shield</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-head">
+                    <h2 id="servers-title">
+                        <span>سيرفراتي</span>
+                        <span class="section-badge">Servers</span>
+                    </h2>
+                    <button class="btn btn-ghost btn-sm" onclick="refreshServers()">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+            تحديث
+                    </button>
+                </div>
+                
+                <div class="servers-grid" id="servers-grid"></div>
+            </div>
+
+            <!-- Server View -->
+            <div class="page" id="page-server">
+                <div class="server-head">
+                    <button class="icon-btn" onclick="switchPage('dashboard')" title="رجوع للسيرفرات">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                    </button>
+                    <div class="server-avatar">🖥️</div>
+                    <div class="server-head-info">
+                        <div class="server-head-name" id="server-name">—</div>
+                        <div class="server-head-sub">
+                            <span id="server-status-pill" class="status-pill status-stopped"><span class="dot"></span>متوقف</span>
+                            <span class="server-owner" id="server-owner"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tabs">
+                    <button class="tab active" data-tab="console">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                        <span>الكونسول</span>
+                    </button>
+                    <button class="tab" data-tab="files">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                        <span>إدارة الملفات</span>
+                    </button>
+                    <button class="tab" data-tab="startup">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        <span>الإعدادات والبيانات</span>
+                    </button>
+                </div>
+
+                <!-- Console -->
+                <div class="tab-panel active" id="tab-console">
+                    <!-- Live Telemetry Row (Arix graphs: 3) -->
+                    <div class="telemetry-row">
+                        <div class="telemetry-card">
+                            <div class="telemetry-info">
+                                <span class="telemetry-label">CPU Usage</span>
+                                <span class="telemetry-val" id="telemetry-cpu">0.0%</span>
+                            </div>
+                            <div class="telemetry-icon-box">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                            </div>
+                        </div>
+
+                        <div class="telemetry-card">
+                            <div class="telemetry-info">
+                                <span class="telemetry-label">Memory Usage</span>
+                                <span class="telemetry-val" id="telemetry-ram">-- MB / 256 MB</span>
+                            </div>
+                            <div class="telemetry-icon-box">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><path d="M6 19v-3"/><path d="M10 19v-3"/><path d="M14 19v-3"/><path d="M18 19v-3"/><path d="M2 11h20"/><path d="M2 7h20"/><rect x="2" y="3" width="20" height="18" rx="2"/></svg>
+                            </div>
+                        </div>
+
+                        <div class="telemetry-card">
+                            <div class="telemetry-info">
+                                <span class="telemetry-label">Network I/O</span>
+                                <span class="telemetry-val" id="telemetry-net">0 KB/s ↑ · 0 KB/s ↓</span>
+                            </div>
+                            <div class="telemetry-icon-box">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="power-bar">
+                        <button class="power-btn power-start" data-action="start">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20"/></svg>
+                            <span>تشغيل / Start</span>
+                        </button>
+                        <button class="power-btn power-restart" data-action="restart">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+                            <span>إعادة تشغيل</span>
+                        </button>
+                        <button class="power-btn power-stop" data-action="stop">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+                            <span>إيقاف / Stop</span>
+                        </button>
+                        <button class="power-btn power-kill" data-action="kill">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+                            <span>إنهاء قسري / Kill</span>
+                        </button>
+                    </div>
+
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dots"><span></span><span></span><span></span></div>
+                            <div class="terminal-title">container@lynoup:~$ node index.js</div>
+                            <div class="terminal-actions">
+                                <button type="button" class="terminal-tool" id="btn-clear-console" title="مسح مخرجات الكونسول">مسح</button>
+                                <div class="terminal-live"><span class="live-dot"></span>LIVE</div>
+                            </div>
+                        </div>
+                        <div class="terminal-body" id="console-body">
+                            <div class="terminal-hint">اضغط "تشغيل" لبدء السيرفر ومراقبة المخرجات هنا مباشرة...</div>
+                        </div>
+                        <form class="terminal-input-bar" id="console-form">
+                            <span class="terminal-prompt">container@lynoup:~$</span>
+                            <input type="text" id="console-input" placeholder="اكتب أمراً هنا (Type command)..." autocomplete="off">
+                            <button type="submit" class="btn btn-primary btn-sm">إرسال</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Files -->
+                <div class="tab-panel" id="tab-files">
+                    <div class="panel-toolbar">
+                        <button class="btn btn-primary btn-sm" id="btn-upload">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              رفع ملف
+                        </button>
+                        <button class="btn btn-ghost btn-sm" id="btn-new-folder">مجلد جديد</button>
+                        <button class="btn btn-ghost btn-sm" id="btn-new-file">ملف جديد</button>
+                        <button class="btn btn-ghost btn-sm" id="btn-compress-folder">ضغط المجلد</button>
+                        <button class="btn btn-ghost btn-sm" id="btn-refresh-files">تحديث</button>
+                        <button class="btn btn-ghost btn-sm" id="btn-install-deps">تنصيب المكتبات (npm install)</button>
+                        <div class="file-breadcrumb" id="file-breadcrumb"></div>
+                    </div>
+
+                    <div class="file-manager">
+                        <div class="file-list" id="file-list"></div>
+                        <div class="file-editor" id="file-editor" style="display:none">
+                            <div class="editor-toolbar">
+                                <span class="editor-filename" id="editor-filename"></span>
+                                <div class="editor-actions">
+                                    <button class="btn btn-primary btn-sm" id="btn-save-file">حفظ</button>
+                                    <button class="btn btn-ghost btn-sm" id="btn-close-editor">إغلاق</button>
+                                </div>
+                            </div>
+                            <textarea id="editor-content" spellcheck="false"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Startup -->
+                <div class="tab-panel" id="tab-startup">
+                    <div class="form-card">
+                        <h3 class="form-card-title">إعدادات التشغيل الأساسية</h3>
+                        <div class="form-group">
+                            <label>اسم السيرفر</label>
+                            <input type="text" id="startup-name" maxlength="64" placeholder="My Server">
+                        </div>
+                        <div class="form-group">
+                            <label>الملف الرئيسي (Main File)</label>
+                            <input type="text" id="startup-mainfile" placeholder="index.js">
+                        </div>
+                        <div class="form-group">
+                            <label>الوصف</label>
+                            <textarea id="startup-description" rows="2" maxlength="500" placeholder="وصف مختصر للسيرفر..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>متغيرات البيئة (Environment Variables - JSON)</label>
+                            <textarea id="startup-env" rows="6" class="code-input" placeholder='{"TOKEN": "your-bot-token"}'></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
+                                <input type="checkbox" id="startup-autorestart" style="width:auto">
+                                إعادة التشغيل التلقائي عند التوقف غير المتوقع (Auto Restart)
+                            </label>
+                        </div>
+                        <button class="btn btn-primary" id="btn-save-startup">حفظ الإعدادات</button>
+                    </div>
+
+                    <div class="form-card creds-card" id="creds-card">
+                        <h3 class="form-card-title">بيانات الدخول الفرعية للسيرفر (Subuser Access)</h3>
+                        <p class="creds-desc">شارك هذا الرابط مع اسم المستخدم وكلمة المرور للدخول المباشر إلى هذا السيرفر دون الوصول إلى باقي لوحة التحكم.</p>
+                        <div class="cred-row">
+                            <span class="cred-label">رابط السيرفر</span>
+                            <code id="cred-link">—</code>
+                        </div>
+                        <div class="cred-row">
+                            <span class="cred-label">اسم المستخدم</span>
+                            <code id="cred-username">—</code>
+                        </div>
+                        <div class="cred-row" id="cred-pass-row" style="display:none">
+                            <span class="cred-label">كلمة المرور (تظهر مرة واحدة)</span>
+                            <code id="cred-password">—</code>
+                        </div>
+                        <div class="creds-actions">
+                            <button class="btn btn-ghost btn-sm" id="btn-copy-cred">نسخ البيانات</button>
+                            <button class="btn btn-primary btn-sm" id="btn-regen-cred">توليد بيانات جديدة</button>
+                        </div>
+                    </div>
+
+                    <div class="danger-zone">
+                        <div>
+                            <div class="danger-title">منطقة الخطر (Danger Zone)</div>
+                            <div class="danger-sub">حذف السيرفر سيقوم بمسح كافة الملفات والبيانات بشكل نهائي ولا يمكن استرجاعها.</div>
+                        </div>
+                        <button class="btn btn-danger" id="btn-delete-server">حذف السيرفر</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Users (Admin) -->
+            <div class="page" id="page-users">
+                <div class="section-head">
+                    <h2>
+                        <span>إدارة المستخدمين</span>
+                        <span class="section-badge">Accounts</span>
+                    </h2>
+                    <button class="btn btn-primary btn-sm" id="btn-new-user">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            مستخدم جديد
+                    </button>
+                </div>
+                <div class="table-card">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>المستخدم</th>
+                                <th>الصلاحية</th>
+                                <th>السيرفرات</th>
+                                <th>الحد الأقصى</th>
+                                <th>الحالة</th>
+                                <th style="text-align:left">إجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- System (Admin) -->
+            <div class="page" id="page-system">
+                <div class="section-head">
+                    <h2>
+                        <span>معلومات النظام والمضيف</span>
+                        <span class="section-badge">Node Metrics</span>
+                    </h2>
+                </div>
+                <div class="settings-grid" id="system-grid"></div>
+            </div>
+
+            <!-- Account -->
+            <div class="page" id="page-account">
+                <div class="section-head">
+                    <h2>
+                        <span>حسابي الشخصي</span>
+                        <span class="section-badge">Profile</span>
+                    </h2>
+                </div>
+                <div class="account-grid">
+                    <div class="profile-card">
+                        <div class="profile-avatar" id="profile-avatar">L</div>
+                        <div class="profile-name" id="profile-name">—</div>
+                        <div class="profile-role" id="profile-role">—</div>
+                        <div class="profile-meta" id="profile-meta"></div>
+                    </div>
+                    <div class="form-card">
+                        <h3 class="form-card-title">تغيير كلمة المرور</h3>
+                        <div class="form-group">
+                            <label>كلمة المرور الحالية</label>
+                            <input type="password" id="pwd-current" autocomplete="current-password" placeholder="••••••••">
+                        </div>
+                        <div class="form-group">
+                            <label>كلمة المرور الجديدة</label>
+                            <input type="password" id="pwd-new" autocomplete="new-password" placeholder="••••••••">
+                        </div>
+                        <button class="btn btn-primary" id="btn-change-password">تحديث كلمة المرور</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- New Server Modal -->
+    <div class="modal" id="modal-new-server">
+        <div class="modal-backdrop"></div>
+        <div class="modal-box">
+            <div class="modal-head">
+                <h3>إنشاء سيرفر جديد في LYNO UP</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="form-new-server" enctype="multipart/form-data">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>اسم السيرفر</label>
+                            <input type="text" name="name" required maxlength="64" placeholder="مثال: Discord Bot">
+                        </div>
+                        <div class="form-group">
+                            <label>الملف الرئيسي</label>
+                            <input type="text" name="mainFile" value="index.js" placeholder="index.js">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>رفع ملفات المشروع (ZIP أو ملفات فردية)</label>
+                        <div class="dropzone" id="dropzone">
+                            <div class="dropzone-icon">📁</div>
+                            <div class="dropzone-text">اسحب الملفات هنا أو اضغط للاختيار من جهازك</div>
+                            <div class="dropzone-hint">.js .json .env .zip .txt .md</div>
+                            <input type="file" name="file" id="server-file-input" multiple accept=".js,.json,.env,.zip,.txt,.md">
+                        </div>
+                        <div class="file-preview" id="file-preview"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>متغيرات البيئة (JSON)</label>
+                        <textarea name="env" rows="4" class="code-input" placeholder='{"TOKEN": "your-bot-token"}'></textarea>
+                    </div>
+                    <div class="modal-foot">
+                        <button type="button" class="btn btn-ghost modal-close-btn">إلغاء</button>
+                        <button type="submit" class="btn btn-primary">إنشاء السيرفر</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Modal -->
+    <div class="modal" id="modal-user">
+        <div class="modal-backdrop"></div>
+        <div class="modal-box modal-sm">
+            <div class="modal-head">
+                <h3 id="user-modal-title">مستخدم جديد</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="form-user">
+                    <input type="hidden" id="user-id">
+                    <div class="form-group">
+                        <label>اسم المستخدم</label>
+                        <div class="input-action">
+                            <input type="text" id="user-username" minlength="3" maxlength="32" placeholder="username">
+                            <button type="button" class="btn btn-ghost btn-sm" id="btn-gen-username" title="توليد عشوائي">🎲</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>كلمة المرور <span id="user-password-hint" class="hint"></span></label>
+                        <div class="input-action">
+                            <input type="text" id="user-password" minlength="6" autocomplete="off" placeholder="••••••••">
+                            <button type="button" class="btn btn-ghost btn-sm" id="btn-gen-password" title="توليد عشوائي">🎲</button>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>الصلاحية</label>
+                            <select id="user-role">
+                                <option value="user">مستخدم (User)</option>
+                                <option value="admin">مشرف (Administrator)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>أقصى عدد سيرفرات (0 = بلا حد)</label>
+                            <input type="number" id="user-maxbots" min="0" value="0">
+                        </div>
+                    </div>
+                    <div class="modal-foot">
+                        <button type="button" class="btn btn-ghost modal-close-btn">إلغاء</button>
+                        <button type="submit" class="btn btn-primary" id="btn-save-user">حفظ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Credentials Result Modal -->
+    <div class="modal" id="modal-creds">
+        <div class="modal-backdrop"></div>
+        <div class="modal-box modal-sm">
+            <div class="modal-head">
+                <h3 id="creds-modal-title">بيانات الدخول</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="creds-desc">احفظ البيانات بعناية — كلمة المرور لن تظهر مجدداً. يمكنك نسخ البيانات ومشاركتها مع المستخدم.</p>
+                <div class="cred-row" id="cm-link-row">
+                    <span class="cred-label">رابط الدخول</span>
+                    <code id="cm-link">—</code>
+                </div>
+                <div class="cred-row">
+                    <span class="cred-label">اسم المستخدم</span>
+                    <code id="cm-user">—</code>
+                </div>
+                <div class="cred-row">
+                    <span class="cred-label">كلمة المرور</span>
+                    <code id="cm-pass">—</code>
+                </div>
+                <div class="creds-actions">
+                    <button class="btn btn-primary" id="cm-copy" style="width:100%">نسخ الكل</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

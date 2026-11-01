@@ -1,0 +1,182 @@
+/* ==========================================================================
+   LYNO UP Control Panel — Arix Theme Stylesheet
+   Matching Arix Theme Architecture & Layout 3
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Cairo:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Dimensions & Radii */
+  --borderInput: 1px solid;
+  --radiusBox: 10px;
+  --radiusInput: 7px;
+  --sidebar-w: 260px;
+  --topbar-h: 64px;
+
+  /* LYNO UP Official Arix Color System */
+  --primary: #412c55;
+  --primary-accent: #7c3aed;
+  --primary-glow: #8b5cf6;
+  --primary-light: #9061f9;
+  --primary-hover: #6d28d9;
+  --primary-soft: rgba(124, 58, 237, 0.16);
+  --primary-gradient: linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%);
+  --primary-gradient-subtle: linear-gradient(135deg, rgba(124, 58, 237, 0.2) 0%, rgba(65, 44, 85, 0.4) 100%);
+
+  /* Success / Running */
+  --successText: #d5f6ea;
+  --successBorder: #34d399;
+  --successBackground: #106b49;
+  --green: #10b981;
+  --green-soft: rgba(16, 185, 129, 0.15);
+  --green-glow: rgba(16, 185, 129, 0.35);
+
+  /* Danger / Stopped */
+  --dangerText: #f8dad8;
+  --dangerBorder: #e0574f;
+  --dangerBackground: #6c130e;
+  --red: #ef4444;
+  --red-soft: rgba(239, 68, 68, 0.15);
+  --red-glow: rgba(239, 68, 68, 0.35);
+
+  /* Warning / Starting / Restart */
+  --warningText: #fef3c7;
+  --warningBorder: #f59e0b;
+  --warningBackground: #78350f;
+  --amber: #f59e0b;
+  --amber-soft: rgba(245, 158, 11, 0.15);
+
+  /* Secondary & Accents */
+  --secondaryText: #9c9cb5;
+  --secondaryBorder: #34334f;
+  --secondaryBackground: #1a1c38;
+  --blue: #3b82f6;
+  --blue-soft: rgba(59, 130, 246, 0.15);
+  --purple: #a855f7;
+  --purple-soft: rgba(168, 85, 247, 0.15);
+
+  /* Arix Gray Scales */
+  --gray50: #f4f3f7;
+  --gray100: #e2e2e9;
+  --gray200: #9c9cb5;
+  --gray300: #8a8aa8;
+  --gray400: #64647f;
+  --gray500: #34334f;
+  --gray600: #1a1c38;
+  --gray700: #0e1024;
+  --gray800: #0a0c1c;
+  --gray900: #05060f;
+  --gray700-default: #0e1024;
+
+  /* Surfaces */
+  --bg: #05060f;
+  --bg-card: #0e1024;
+  --bg-card-hover: #13152d;
+  --bg-sidebar: #0a0c1c;
+  --bg-topbar: rgba(14, 16, 36, 0.92);
+  --border: #1a1c38;
+  --border-light: #34334f;
+  --text: #f4f3f7;
+  --text-dim: #9c9cb5;
+  --text-mute: #64647f;
+
+  /* Shadows */
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.35);
+  --shadow-purple: 0 10px 30px rgba(124, 58, 237, 0.25);
+  --shadow-glow: 0 0 20px rgba(124, 58, 237, 0.35);
+
+  /* Typography */
+  --font: 'Rubik', 'IBM Plex Sans', 'Cairo', system-ui, -apple-system, sans-serif;
+  --mono: 'IBM Plex Mono', 'JetBrains Mono', 'Consolas', monospace;
+}
+
+/* Reset & Basics */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font);
+  color-scheme: dark;
+  background-color: var(--bg);
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(65, 44, 85, 0.45) 0%, transparent 60%),
+    radial-gradient(circle at 100% 50%, rgba(26, 28, 56, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 0% 100%, rgba(65, 44, 85, 0.25) 0%, transparent 50%);
+  background-attachment: fixed;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Starfield Background Canvas */
+#stars-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gray500);
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-accent);
+  background-clip: content-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+input, textarea, select {
+  font-family: inherit;
+}
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--primary-light);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+::selection {
+  background: rgba(124, 58, 237, 0.45);
+  color: #ffffff;
+}
